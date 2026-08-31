@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block title %}
+ShopEasy - Home
+{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+
+    <h1>Welcome to ShopEasy</h1>
+
+    <p>
+        Find the products you love at great prices.
+    </p>
+
+</section>
+
+
+<h2 class="section-title">
+    Our Products
+</h2>
+
+
+<div class="product-grid">
+
+    {% for product in products %}
+
+        <div class="product-card">
+
+            {% if product.image_url %}
+
+                <img
+                    src="{{ product.image_url }}"
+                    alt="{{ product.name }}"
+                    class="product-image"
+                >
+
+            {% else %}
+
+                <div class="product-placeholder">
+                    No Image
+                </div>
+
+            {% endif %}
+
+
+            <div class="product-content">
+
+                <h3>
+                    {{ product.name }}
+                </h3>
+
+                <p>
+                    {{ product.description|truncatewords:15 }}
+                </p>
+
+                <h3>
+                    ₹{{ product.price }}
+                </h3>
+
+                <p>
+                    Stock: {{ product.stock }}
+                </p>
+
+                <a
+                    href="{% url 'product_detail' product.id %}"
+                    class="button secondary"
+                >
+                    View Details
+                </a>
+
+            </div>
+
+        </div>
+
+    {% empty %}
+
+        <p>
+            No products available yet.
+        </p>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

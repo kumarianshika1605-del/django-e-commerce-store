@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Shopping Cart
+{% endblock %}
+
+{% block content %}
+
+<h1>
+    Shopping Cart
+</h1>
+
+
+{% if items %}
+
+    <div class="cart-list">
+
+        {% for item in items %}
+
+            <div class="cart-item">
+
+                {% if item.product.image_url %}
+
+                    <img
+                        src="{{ item.product.image_url }}"
+                        alt="{{ item.product.name }}"
+                        class="cart-image"
+                    >
+
+                {% endif %}
+
+
+                <div class="cart-info">
+
+                    <h3>
+                        {{ item.product.name }}
+                    </h3>
+
+                    <p>
+                        Price: ₹{{ item.product.price }}
+                    </p>
+
+                    <p>
+                        Subtotal: ₹{{ item.subtotal }}
+                    </p>
+
+                </div>
+
+
+                <form
+                    action="{% url 'update_cart' item.product.id %}"
+                    method="post"
+                >
+
+                    {% csrf_token %}
+
+                    <label>
+                        Quantity:
+                    </label>
+
+                    <input
+                        type="number"
+                        name="quantity"
+                        value="{{ item.quantity }}"
+                        min="1"
+                        max="{{ item.product.stock }}"
+                    >
+
+                    <button
+                        type="submit"
+                        class="button secondary"
+                    >
+                        Update
+                    </button>
+
+                </form>
+
+
+                <form
+                    action="{% url 'remove_from_cart' item.product.id %}"
+                    method="post"
+                >
+
+                    {% csrf_token %}
+
+                    <button
+                        type="submit"
+                        class="button danger"
+                    >
+                        Remove
+                    </button>
+
+                </form>
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+
+    <div class="cart-summary">
+
+        <h2>
+            Total: ₹{{ total }}
+        </h2>
+
+        {% if user.is_authenticated %}
+
+            <a
+                href="{% url 'checkout' %}"
+                class="button"
+            >
+                Proceed to Checkout
+            </a>
+
+        {% else %}
+
+            <p>
+                Please login before checkout.
+            </p>
+
+            <a
+                href="{% url 'login' %}?next={% url 'checkout' %}"
+                class="button"
+            >
+                Login to Checkout
+            </a>
+
+        {% endif %}
+
+    </div>
+
+{% else %}
+
+    <div class="empty-cart">
+
+        <h2>
+            Your cart is empty.
+        </h2>
+
+        <a
+            href="{% url 'home' %}"
+            class="button"
+        >
+            Continue Shopping
+        </a>
+
+    </div>
+
+{% endif %}
+
+{% endblock %}

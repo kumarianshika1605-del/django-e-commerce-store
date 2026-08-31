@@ -1,0 +1,285 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f6fa;
+    color: #222;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.navbar {
+    background: #111827;
+    padding: 18px 0;
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+.welcome {
+    color: white;
+}
+
+.inline-form {
+    display: inline;
+}
+
+.nav-button {
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.hero {
+    margin: 30px 0;
+    padding: 50px 20px;
+    text-align: center;
+    background: white;
+    border-radius: 12px;
+}
+
+.hero h1 {
+    font-size: 42px;
+}
+
+.section-title {
+    margin-top: 35px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin: 25px 0 50px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.product-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.product-placeholder {
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ddd;
+    color: #666;
+}
+
+.product-placeholder.large {
+    height: 450px;
+}
+
+.product-content {
+    padding: 20px;
+}
+
+.button {
+    display: inline-block;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 7px;
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button.secondary {
+    background: #4b5563;
+}
+
+.button.danger {
+    background: #dc2626;
+}
+
+.detail-page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    margin: 50px 0;
+}
+
+.detail-image {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.detail-content {
+    padding: 20px;
+}
+
+.cart-list {
+    margin: 30px 0;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: white;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+.cart-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.cart-info {
+    flex: 1;
+}
+
+.cart-item input {
+    width: 70px;
+    padding: 8px;
+}
+
+.cart-summary {
+    background: white;
+    padding: 25px;
+    margin-bottom: 50px;
+    border-radius: 10px;
+}
+
+.empty-cart {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.checkout-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin: 30px 0 60px;
+}
+
+.checkout-grid > div {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.checkout-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+}
+
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0 20px;
+}
+
+.auth-box {
+    max-width: 500px;
+    margin: 60px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+}
+
+.auth-box input {
+    width: 100%;
+    padding: 10px;
+}
+
+.success-box {
+    text-align: center;
+    background: white;
+    padding: 60px 20px;
+    margin: 60px auto;
+    border-radius: 12px;
+}
+
+.message {
+    padding: 15px;
+    background: #dbeafe;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+.out-of-stock {
+    color: red;
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    margin-top: 50px;
+    background: #111827;
+    color: white;
+}
+
+
+@media (max-width: 800px) {
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .detail-page {
+        grid-template-columns: 1fr;
+    }
+
+    .checkout-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .cart-item {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+}

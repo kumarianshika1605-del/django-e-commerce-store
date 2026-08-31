@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Checkout
+{% endblock %}
+
+{% block content %}
+
+<h1>
+    Checkout
+</h1>
+
+
+<div class="checkout-grid">
+
+    <div>
+
+        <h2>
+            Your Order
+        </h2>
+
+        {% for item in items %}
+
+            <div class="checkout-item">
+
+                <span>
+                    {{ item.product.name }}
+                    × {{ item.quantity }}
+                </span>
+
+                <strong>
+                    ₹{{ item.subtotal }}
+                </strong>
+
+            </div>
+
+        {% endfor %}
+
+
+        <hr>
+
+
+        <h2>
+            Total: ₹{{ total }}
+        </h2>
+
+    </div>
+
+
+    <div>
+
+        <h2>
+            Shipping Information
+        </h2>
+
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            <label for="shipping_address">
+                Shipping Address
+            </label>
+
+            <textarea
+                id="shipping_address"
+                name="shipping_address"
+                rows="6"
+                required
+                placeholder="Enter your full address"
+            ></textarea>
+
+
+            <button
+                type="submit"
+                class="button"
+            >
+                Place Order
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}
